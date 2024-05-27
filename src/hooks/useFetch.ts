@@ -5,7 +5,7 @@ const QUERY_KEY = 'https://newsapi.org/v2/everything'
 
 const date = dayjs().subtract(1, "month").add(1, 'day').format("YYYY-MM-DD");
 
-const API_KEY = '8ab9f6a80b5241b4ba7f0b3938ea683e'
+const SORT_BY = 'publishedAt'
 
 export function useFetch<T>(query: string) {
     const queryResult = useQuery<T>(
@@ -13,9 +13,9 @@ export function useFetch<T>(query: string) {
             QUERY_KEY,
             {
                 q: query,
-                sortBy: 'publishedAt',
+                sortBy: SORT_BY,
                 from: date,
-                apiKey: API_KEY,
+                apiKey: import.meta.env.VITE_API_KEY_NEWS,
             },
         ],
         {
